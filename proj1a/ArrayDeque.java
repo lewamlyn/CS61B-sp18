@@ -17,18 +17,18 @@ public class ArrayDeque<T> {
         items = a;
     }
 
-    private int renext(int next){
-        if(next < 0){
+    private int renext(int next) {
+        if (next < 0) {
             return next + items.length;
         }
-        if(next >= items.length){
+        if (next >= items.length) {
             return next - items.length;
         }
         return next;
     }
 
     /* Adds an item of type T to the front of the deque. */
-    public void addFirst(T item){
+    public void addFirst(T item) {
         if (size == items.length) {
             resize(size * 2);
         }
@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     }
 
     /* Adds an item of type T to the back of the deque. */
-    public void addLast(T item){
+    public void addLast(T item ) {
         if (size == items.length) {
             resize(size * 2);
         }
@@ -50,23 +50,23 @@ public class ArrayDeque<T> {
     }
 
     /* Returns true if deque is empty, false otherwise. */
-    public boolean isEmpty(){
-        if(size == 0){
+    public boolean isEmpty() {
+        if (size == 0) {
             return true;
-        }
-        else
+        }else{
             return false;
+        }
     }
 
     /* Returns the number of items in the deque. */
-    public int size(){
+    public int size() {
         return size;
     }
 
     /* Prints the items in the deque from first to last, separated by a space. */
-    public void printDeque(){
+    public void printDeque() {
         int i;
-        for(i=0;i<size-1;i++){
+        for (i = 0; i < size - 1; i++) {
             System.out.print(items[i]);
             System.out.print(" ");
         }
@@ -74,7 +74,7 @@ public class ArrayDeque<T> {
     }
 
     /* Removes and returns the item at the front of the deque. If no such item exists, returns null. */
-    public T removeFirst(){
+    public T removeFirst() {
         nextFirst = nextFirst + 1;
         renext(nextFirst);
         T removeItem = items[nextFirst];
