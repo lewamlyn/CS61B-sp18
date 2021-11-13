@@ -48,7 +48,6 @@ public class ArrayDeque<T> {
             nextFirst = nextFirst - 1;
             nextFirst = renext(nextFirst);
         }
-        System.out.println(nextLast);
         items[nextLast] = item;
         nextLast = nextLast + 1;
         nextLast = renext(nextLast);
