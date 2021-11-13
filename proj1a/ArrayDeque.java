@@ -24,12 +24,12 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
-    /* Add one and make sure value is in range of 0 ~ items.lenth. */
+    /* Add one and make sure value is in range of 0 ~ items.length. */
     private int add(int next) {
         return (next + 1) % items.length;
     }
 
-    /* Sub one and make sure value is in range of 0 ~ items.lenth. */
+    /* Sub one and make sure value is in range of 0 ~ items.length. */
     private int sub(int next) {
         return (next - 1 + items.length) % items.length;
     }
