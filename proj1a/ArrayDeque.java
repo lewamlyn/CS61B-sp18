@@ -11,6 +11,7 @@ public class ArrayDeque<T> {
         nextLast = 1;
     }
 
+    /* Resize array and copy the items from first to last. */
     private void resize(int cap) {
         T[] a = (T []) new Object[cap];
         int index = add(nextFirst);
@@ -23,10 +24,12 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
+    /* Add one and make sure value is in range of 0 ~ items.lenth. */
     private int add(int next) {
         return (next + 1) % items.length;
     }
 
+    /* Sub one and make sure value is in range of 0 ~ items.lenth. */
     private int sub(int next) {
         return (next - 1 + items.length) % items.length;
     }
@@ -63,8 +66,7 @@ public class ArrayDeque<T> {
 
     /* Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
-        int i;
-        for (i = 0; i < items.length; i++) {
+        for (int i = 0; i < items.length; i++) {
             if (items[i] != null) {
                 System.out.print(items[i] + " ");
             }
@@ -107,10 +109,8 @@ public class ArrayDeque<T> {
         }
     }
 
-    /* Gets the item at the given index, where 0 is the front,
-       1 is the next item, and so forth.
-       If no such item exists, returns null.
-       Must not alter the deque! */
+    /* Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
+       If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;

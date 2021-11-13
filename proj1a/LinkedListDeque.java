@@ -27,7 +27,6 @@ public class LinkedListDeque<T> {
     /* Adds an item of type T to the front of the deque. */
     public void addFirst(T item) {
         size += 1;
-
         sentinel.next = new Node(item, sentinel, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
     }
@@ -35,17 +34,13 @@ public class LinkedListDeque<T> {
     /* Adds an item of type T to the back of the deque. */
     public void addLast(T item) {
         size += 1;
-
         sentinel.prev.next = new Node(item, sentinel.prev, sentinel);
         sentinel.prev = sentinel.prev.next;
     }
 
     /* Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     /* Returns the number of items in the deque. */
@@ -107,10 +102,8 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /* Gets the item at the given index, where 0 is the front,
-        1 is the next item, and so forth.
-        If no such item exists, returns null.
-        Must not alter the deque! */
+    /* Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
+        If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
