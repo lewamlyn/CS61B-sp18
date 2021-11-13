@@ -8,7 +8,7 @@ public class ArrayDeque<T> {
         items = (T []) new Object[8];
         size = 0;
         nextFirst = 0;
-        nextLast = 1;
+        nextLast = 0;
     }
 
     private void resize(int cap) {
@@ -21,9 +21,6 @@ public class ArrayDeque<T> {
         if (next < 0) {
             return next + items.length;
         }
-        if (next >= items.length) {
-            return next - items.length;
-        }
         return next;
     }
 
@@ -31,6 +28,10 @@ public class ArrayDeque<T> {
     public void addFirst(T item) {
         if (size == items.length) {
             resize(size * 2);
+        }
+        if (size == 0) {
+            nextLast = nextLast + 1;
+            nextLast = renext(nextLast);
         }
         items[nextFirst] = item;
         nextFirst = nextFirst - 1;
@@ -43,6 +44,11 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * 2);
         }
+        if (size == 0) {
+            nextFirst = nextFirst - 1;
+            nextFirst = renext(nextFirst);
+        }
+        System.out.println(nextLast);
         items[nextLast] = item;
         nextLast = nextLast + 1;
         nextLast = renext(nextLast);
@@ -65,35 +71,42 @@ public class ArrayDeque<T> {
     /* Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
         int i;
-        for (i = 0; i < items.length - 1; i ++) {
+        for (i = 0; i < items.length; i++) {
             if (items[i] != null) {
                 System.out.print(items[i]);
                 System.out.print(" ");
             }
         }
-        System.out.println(items[i]);
     }
 
     /* Removes and returns the item at the front of the deque.
        If no such item exists, returns null. */
     public T removeFirst() {
-        size -= 1;
-        nextFirst = nextFirst + 1;
-        nextFirst = renext(nextFirst);
-        T removeItem = items[nextFirst];
-        items[nextFirst] = null;
-        return  removeItem;
+        if (size == 0) {
+            return null;
+        } else {
+            size -= 1;
+            nextFirst = nextFirst + 1;
+            nextFirst = renext(nextFirst);
+            T removeItem = items[nextFirst];
+            items[nextFirst] = null;
+            return  removeItem;
+        }
     }
 
     /* Removes and returns the item at the back of the deque.
        If no such item exists, returns null. */
     public T removeLast() {
-        size -= 1;
-        nextLast = nextLast - 1;
-        nextLast = renext(nextLast);
-        T removeItem = items[nextLast];
-        items[nextLast] = null;
-        return  removeItem;
+        if (size == 0) {
+            return null;
+        } else {
+            size -= 1;
+            nextLast = nextLast - 1;
+            nextLast = renext(nextLast);
+            T removeItem = items[nextLast];
+            items[nextLast] = null;
+            return  removeItem;
+        }
     }
 
     /* Gets the item at the given index, where 0 is the front,
