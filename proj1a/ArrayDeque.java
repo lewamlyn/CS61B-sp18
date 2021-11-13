@@ -34,7 +34,7 @@ public class ArrayDeque<T> {
         }
         items[nextFirst] = item;
         nextFirst = nextFirst - 1;
-        renext(nextFirst);
+        nextFirst = renext(nextFirst);
         size += 1;
     }
 
@@ -45,7 +45,7 @@ public class ArrayDeque<T> {
         }
         items[nextLast] = item;
         nextLast = nextLast + 1;
-        renext(nextLast);
+        nextLast = renext(nextLast);
         size += 1;
     }
 
@@ -65,9 +65,11 @@ public class ArrayDeque<T> {
     /* Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
         int i;
-        for (i = 0; i < size - 1; i++) {
-            System.out.print(items[i]);
-            System.out.print(" ");
+        for (i = 0; i < items.length - 1; i ++) {
+            if (items[i] != null) {
+                System.out.print(items[i]);
+                System.out.print(" ");
+            }
         }
         System.out.println(items[i]);
     }
@@ -75,8 +77,9 @@ public class ArrayDeque<T> {
     /* Removes and returns the item at the front of the deque.
        If no such item exists, returns null. */
     public T removeFirst() {
+        size -= 1;
         nextFirst = nextFirst + 1;
-        renext(nextFirst);
+        nextFirst = renext(nextFirst);
         T removeItem = items[nextFirst];
         items[nextFirst] = null;
         return  removeItem;
@@ -85,8 +88,9 @@ public class ArrayDeque<T> {
     /* Removes and returns the item at the back of the deque.
        If no such item exists, returns null. */
     public T removeLast() {
+        size -= 1;
         nextLast = nextLast - 1;
-        renext(nextLast);
+        nextLast = renext(nextLast);
         T removeItem = items[nextLast];
         items[nextLast] = null;
         return  removeItem;

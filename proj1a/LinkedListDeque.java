@@ -42,7 +42,7 @@ public class LinkedListDeque<T> {
 
     /* Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
         return false;
@@ -96,7 +96,7 @@ public class LinkedListDeque<T> {
 
     /* Gets the item at the given index,but uses recursion. */
     public T getRecursive(int index) {
-        if (index < 0 || index >= size){
+        if (index < 0 || index >= size) {
             return null;
         } else {
             Node p = sentinel.next;
@@ -112,7 +112,7 @@ public class LinkedListDeque<T> {
         If no such item exists, returns null.
         Must not alter the deque! */
     public T get(int index) {
-        if (index < 0 || index >= size){
+        if (index < 0 || index >= size) {
             return null;
         } else {
             Node p = sentinel.next;
@@ -122,5 +122,4 @@ public class LinkedListDeque<T> {
             return p.item;
         }
     }
-
 }
