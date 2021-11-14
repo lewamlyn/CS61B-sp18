@@ -26,15 +26,15 @@ public class Palindrome {
         if (d.size() <= 1) {
             return true;
         }
-        if ( !cc.equalChars(d.removeFirst(), d.removeLast()))  {
+        if (!cc.equalChars(d.removeFirst(), d.removeLast())) {
             return false;
         }
-        return isPalindromeDeque(d,cc);
+        return isPalindromeDeque(d, cc);
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque d = wordToDeque(word);
-        return isPalindromeDeque(d,cc);
+        return isPalindromeDeque(d, cc);
     }
 
 }

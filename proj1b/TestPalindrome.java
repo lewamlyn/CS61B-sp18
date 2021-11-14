@@ -28,12 +28,11 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testPalindrome(){
-        assertTrue(palindrome.isPalindrome("",one));
-        assertTrue(palindrome.isPalindrome("1",one));
-        assertTrue(palindrome.isPalindrome("flake",one));
-        assertTrue(palindrome.isPalindrome("flke",one));
-        assertFalse(palindrome.isPalindrome("AsA",one));
+    public void testPalindrome() {
+        assertTrue(palindrome.isPalindrome("", one));
+        assertTrue(palindrome.isPalindrome("1", one));
+        assertTrue(palindrome.isPalindrome("flake", one));
+        assertTrue(palindrome.isPalindrome("flke", one));
+        assertFalse(palindrome.isPalindrome("AsA", one));
     }
-
 }
